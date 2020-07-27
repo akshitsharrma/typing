@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <center> <div><strong>Check Your Typing</strong></div><br>
+    <input type="radio" name="level" id="r1" checked onchange="change1(this)">Beginner</input>
+    <input type="radio" name="level" id="r2"onchange="change2(this)">Novice</input>
+    <input type="radio" name="level" id="r3"onchange="change3(this)">Expert</input>
+    <br><br>
+    <div id="guidline"><strong>Type the following text</strong></div>
+    <br><br>
+    <div id="typing"><strong>My first Sentence</strong></div><br>
+    <textarea rows="4" cols="30" id="t1"></textarea>  <br>
+    <div id="time" style="display: inline-block;">Time:0.000</div>
+    <div style="display: inline-block;"><button onclick="k()">Start</button><button   onclick="stop()">Done</button></div>
+</center>
+</body>
+<script>
+ function change1(ele1)
+  {var val=  document.getElementById("typing")
+      val.innerHTML="<strong>My first Sentence";
+  }
+  function change2(ele1)
+  {var val=  document.getElementById("typing")
+      val.innerHTML="<strong>My typing is becoming Better<strong>";
+  }
+  function change3(ele1)
+  {var val=  document.getElementById("typing")
+      val.innerHTML="<strong>I can type fast now.I am very Happy!.<strong>";
+  }
+  
+  var c=0.000;
+    var id;
+   var t= document.getElementById("time");
+   function k()
+   {
+    id= setInterval(start,1)
+   function start()
+    {
+       c= c+.001;
+       t.innerHTML=c.toFixed(3)+"S";
+    } 
+   }
+   function stop()
+   {var fl=-1;
+       var verify=document.getElementById("t1").value;
+       var verify1=document.getElementById("typing").innerText;
+       console.log(verify)
+       console.log(verify1)
+       if(verify===verify1)
+       {
+           alert("your typing was correct. you took "+c.toFixed(3)+"second");
+       }
+       else
+       {
+           alert("Error in typing... Try Again!");
+       }
+       clearInterval(id);
+       c=0.000;
+   }
+    
+
+</script>
+</html>
